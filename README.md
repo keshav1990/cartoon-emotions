@@ -33,14 +33,17 @@ Now change the directory to VToonify and you're all set:
 Cartoonize yourself using the following command:
 ```
 python3 cartoonize_your_images.py --path_data 'Path/to/input/image or folder of images' \
---styles 26 64 299\
+--save_dir 'cartoonization_results/' \
+--styles 26 64 299 \
 --fps 10 \
 --num_imgs 10 
 ```
 
 ## Arguments explained:
-* --path_data           This can be a path of an input image or a folder of images
-* --save_dir            This is the path of the directory where results will be saved
-* --styles              Choose any style or multiple styles from the available file [8, 26, 64, 153, 299]
-* --fps                 Frames per second of the result video
-* --num_imgs            Number of intermediate images of the particular style
+```
+--path_data           This can be a path of an input image or a folder of images
+--save_dir            This is the path of the directory where results will be saved
+--styles              Choose any style or multiple styles from the available file [8, 26, 64, 153, 299]
+--fps                 Frames per second of the result video
+--num_imgs            Number of intermediate images of the particular style
+```
