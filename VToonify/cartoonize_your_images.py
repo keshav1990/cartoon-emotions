@@ -17,10 +17,16 @@ print(args.path_data)
 
 if os.path.isfile(args.path_data):
     image_path = args.path_data
-    generate_cartoons(image_path, args.save_dir, style_id_list=args.styles, num_imgs=args.num_imgs, fps=args.fps)
+    try:
+        generate_cartoons(image_path, args.save_dir, style_id_list=args.styles, num_imgs=args.num_imgs, fps=args.fps)
+    else:
+        print('Error:',image_path)
 
 elif os.path.isdir(args.path_data):
     all_paths = glob(os.path.join(args.path_data,'*'))
     for i in range(0,len(all_paths)):
         image_path = all_paths[i]
-        generate_cartoons(image_path, args.save_dir, style_id_list=args.styles, num_imgs=args.num_imgs, fps=args.fps)
+        try:
+            generate_cartoons(image_path, args.save_dir, style_id_list=args.styles, num_imgs=args.num_imgs, fps=args.fps)
+        else:
+            print('Error:',image_path)
