@@ -1,4 +1,3 @@
-
 img_size = (256,256)
 
 import sys
@@ -404,23 +403,23 @@ def make_annoy(img_org,net,predictor, detector, all_directions_dict,editor):
 
     return manipulated_img
 
-def make_annoy(img_org,net,predictor, detector, all_directions_dict,editor):
+def make_annoy(img_org,net,predictor, detector, all_directions_dict,editor,intensity_annoy):
     manipulated_img,manipulated_latent = img_2_manipulated_interface(img_org,net,predictor, detector, 
-                                                                     all_directions_dict['stg2']['gender'], -1, editor)
+                                                                     all_directions_dict['stg2']['gender'], intensity_annoy['gender'], editor)
     manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, 
-                                                                     all_directions_dict['generators']['eyes_open'],-1, editor)
+                                                                     all_directions_dict['generators']['eyes_open'],intensity_annoy['eyes_open'], editor)
     
     manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, 
-                                                                     all_directions_dict['inter']['age'],-1, editor)
+                                                                     all_directions_dict['inter']['age'],intensity_annoy['age'], editor)
     manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, 
-                                                                     all_directions_dict['generators']['emotion_disgust'], 8, editor)
+                                                                     all_directions_dict['generators']['emotion_disgust'], intensity_annoy['emotion_disgust'], editor)
 
     return manipulated_img
 
 ## happy
-def make_smile(img_org,net,predictor, detector, all_directions_dict,editor):
-    manipulated_img,manipulated_latent = img_2_manipulated_interface(img_org,net,predictor, detector, all_directions_dict['inter']['smile'], 2, editor)
-    manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, all_directions_dict['stg2']['gender'], -1, editor)
+def make_smile(img_org,net,predictor, detector, all_directions_dict,editor,intensity_smile):
+    manipulated_img,manipulated_latent = img_2_manipulated_interface(img_org,net,predictor, detector, all_directions_dict['inter']['smile'], intensity_smile['smile'], editor)
+    manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, all_directions_dict['stg2']['gender'], intensity_smile['gender'] , editor)
 
     return manipulated_img
 
@@ -432,21 +431,21 @@ def make_sad(img_org,net,predictor, detector, all_directions_dict,editor):
     # manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, direction_artifact, -3, editor)
     return manipulated_img
 
-def make_sad(img_org,net,predictor, detector, all_directions_dict,editor):
-    manipulated_img,manipulated_latent = img_2_manipulated_interface(img_org,net,predictor, detector, all_directions_dict['generators']['emotion_easy'], 5, editor)
+def make_sad(img_org,net,predictor, detector, all_directions_dict,editor,intensity_sad):
+    manipulated_img,manipulated_latent = img_2_manipulated_interface(img_org,net,predictor, detector, all_directions_dict['generators']['emotion_easy'], intensity_sad['emotion_easy'], editor)
     # manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, all_directions_dict['generators']['eyes_open'],-3, editor)
-    manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, all_directions_dict['generators']['emotion_sad'], 13, editor)
+    manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, all_directions_dict['generators']['emotion_sad'], intensity_sad['emotion_sad'], editor)
     # manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, all_directions_dict['stg2']['gender'], -1, editor)
     # manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, direction_artifact, -7, editor)
-    manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, all_directions_dict['generators']['eyes_open'],-4, editor)
+    manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, all_directions_dict['generators']['eyes_open'],intensity_sad['eyes_open'], editor)
     
     return manipulated_img
 
 ## angry
-def make_angry(img_org,net,predictor, detector, all_directions_dict,editor):
-    manipulated_img,manipulated_latent = img_2_manipulated_interface(img_org,net,predictor, detector, all_directions_dict['generators']['emotion_easy'], 3, editor)
-    manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, all_directions_dict['generators']['emotion_happy'], -4, editor)
-    manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, all_directions_dict['generators']['emotion_angry'], 6, editor)
-    manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, all_directions_dict['inter']['age'], -2, editor)
+def make_angry(img_org,net,predictor, detector, all_directions_dict,editor,intensity_angry):
+    manipulated_img,manipulated_latent = img_2_manipulated_interface(img_org,net,predictor, detector, all_directions_dict['generators']['emotion_easy'], intensity_angry['emotion_easy'], editor)
+    manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, all_directions_dict['generators']['emotion_happy'], intensity_angry['emotion_happy'], editor)
+    manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, all_directions_dict['generators']['emotion_angry'], intensity_angry['emotion_angry'], editor)
+    manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, all_directions_dict['inter']['age'], intensity_angry['age'], editor)
     # manipulated_img,manipulated_latent = img_2_manipulated_interface(manipulated_img,net,predictor, detector, direction_artifact, -7, editor)
     return manipulated_img
